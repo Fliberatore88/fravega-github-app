@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+body {
+  background-color: #f6f8fa;
+  color: #171717;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #24292f;
+    color: #c9d1d9;
+  }
+}
+
+html[data-theme='dark'] body {
+  background-color: #24292f;
+  color: #c9d1d9;
+}
+
+html[data-theme='light'] body {
+  background-color: #f6f8fa;
+  color: #171717;
+}
+
+.bg-gray-200.dark {
+  background-color: #30363d;
+}
+
+.bg-gray-200.dark:hover {
+  background-color: #3f444a;
+}
+
+.bg-gray-700.light {
+  background-color: #e5e7eb;
+}
+
+.bg-gray-700.light:hover {
+  background-color: #d4d4d8;
+}
+
+.text-gray-800.dark {
+  color: #c9d1d9;
+}
+
+.text-gray-800.light {
+  color: #171717;
+}
+
+.text-white.light {
+  color: #171717;
+}
+
+.text-white.dark {
+  color: #c9d1d9;
+}
+
+html[data-theme='dark'] .border {
+  border-color: #30363d;
+}
+
+html[data-theme='dark'] input,
+html[data-theme='dark'] textarea {
+  background-color: #30363d;
+  color: #c9d1d9;
+}
+
+html[data-theme='dark'] button {
+  background-color: #30363d;
+  color: #c9d1d9;
+}
+
+html[data-theme='light'] button {
+  background-color: #e5e7eb;
+  color: #171717;
+}
+
+html[data-theme='dark'] .card {
+  background-color: #30363d;
+}
+
+html[data-theme='light'] .card {
+  background-color: #ffffff;
+}
