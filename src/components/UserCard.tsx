@@ -1,16 +1,15 @@
 import { User } from '../types/user';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { useAppContext } from '../contexts/AppContext';
 
 interface UserCardProps {
   user: User;
   isFirst: boolean;
-  isFavorite: boolean; // Agregamos isFavorite
-  toggleFavorite: (user: User) => void; // Agregamos toggleFavorite
+  isFavorite: boolean; 
+  toggleFavorite: (user: User) => void;
 }
 
-const UserCard: React.FC<UserCardProps> = ({ user, isFirst, isFavorite, toggleFavorite }) => { // Actualizamos la firma del componente
+const UserCard: React.FC<UserCardProps> = ({ user, isFirst, isFavorite, toggleFavorite }) => {
   const router = useRouter();
 
   const handleClick = () => {

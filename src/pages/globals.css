@@ -3,7 +3,8 @@
 body {
   background-color: #f6f8fa;
   color: #171717;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--poppins),
+    monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -32,11 +33,11 @@ html[data-theme='light'] body {
 }
 
 .bg-gray-700.light {
-  background-color: #e5e7eb;
+  background-color: #e0f2fe;
 }
 
 .bg-gray-700.light:hover {
-  background-color: #d4d4d8;
+  background-color: #bae6fd;
 }
 
 .text-gray-800.dark {
@@ -71,8 +72,9 @@ html[data-theme='dark'] button {
 }
 
 html[data-theme='light'] button {
-  background-color: #e5e7eb;
+  background-color: #e0f2fe;
   color: #171717;
+  border: 1px solid #bae6fd;
 }
 
 html[data-theme='dark'] .card {
@@ -81,4 +83,12 @@ html[data-theme='dark'] .card {
 
 html[data-theme='light'] .card {
   background-color: #ffffff;
+}
+
+html[data-theme='dark'] .sticky.top-4.z-10 {
+  background-color: #27272a;
+}
+
+html[data-theme='light'] .sticky.top-4.z-10 {
+  background-color: #e0f2fe;
 }

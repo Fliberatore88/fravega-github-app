@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, useContext } from 'react';
+import { createContext, useState, useEffect, useContext, Dispatch, SetStateAction } from 'react';
 import { User } from '../types/user';
 
 interface AppContextProps {
@@ -8,6 +8,11 @@ interface AppContextProps {
   favoriteUsers: User[];
   setFavoriteUsers: (users: User[]) => void;
   toggleFavorite: (user: User) => void;
+  searchTerm: string;
+  setSearchTerm: Dispatch<SetStateAction<string>>;
+  searchResults: User[];
+  setSearchResults: Dispatch<SetStateAction<User[]>>;
+  setUserNotFound: Dispatch<SetStateAction<boolean>>;
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
@@ -15,6 +20,9 @@ const AppContext = createContext<AppContextProps | undefined>(undefined);
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [favoriteUsers, setFavoriteUsers] = useState<User[]>([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState<User[]>([]);
+  const [userNotFound, setUserNotFound] = useState(false);
 
   useEffect(() => {
     const storedTheme = localStorage.getItem('theme');
@@ -27,7 +35,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   useEffect(() => {
     localStorage.setItem('theme', theme);
-    document.documentElement.setAttribute('data-theme', theme); // Actualizamos el atributo data-theme
+    document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {
@@ -43,7 +51,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   return (
-    <AppContext.Provider value={{ theme, setTheme, toggleTheme, favoriteUsers, setFavoriteUsers, toggleFavorite }}>
+    <AppContext.Provider value={{ theme, setTheme, toggleTheme, favoriteUsers, setFavoriteUsers, toggleFavorite, searchTerm, setSearchTerm, searchResults, setSearchResults, setUserNotFound }}>
       {children}
     </AppContext.Provider>
   );

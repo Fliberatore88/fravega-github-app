@@ -7,10 +7,9 @@ import { useAppContext } from '../../contexts/AppContext';
 
 interface UserDetailPageProps {
   user: User | null;
-  imageUrl: string;
 }
 
-const UserDetailPage: React.FC<UserDetailPageProps> = ({ user, imageUrl }) => {
+const UserDetailPage: React.FC<UserDetailPageProps> = ({ user }) => {
   const router = useRouter();
   const { favoriteUsers, toggleFavorite } = useAppContext();
   const isFavorite = !!favoriteUsers.find((u) => u.login === user?.login);
@@ -23,7 +22,7 @@ const UserDetailPage: React.FC<UserDetailPageProps> = ({ user, imageUrl }) => {
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="card border border-gray-200 p-8 rounded-md shadow-md relative w-full max-w-xl">
         <div className="flex items-center justify-center mb-6">
-          <Image src={imageUrl} alt={user.login} width={150} height={150} className="rounded-full" />
+          <Image src={user.avatar_url} alt={user.login} width={150} height={150} className="rounded-full" />
           <Image
             src={isFavorite ? '/favorito-seleccionado.png' : '/favorito-sin-seleccionar.png'}
             alt={isFavorite ? 'Eliminar Favorito' : 'Agregar Favorito'}
@@ -67,7 +66,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     return {
       props: {
         user,
-        imageUrl: user.avatar_url,
       },
     };
   } catch (error) {
