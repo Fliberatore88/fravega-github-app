@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosResponse, AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios';
+import axios, { AxiosError} from 'axios';
 import * as githubService from '@/services/github';
 import NodeCache from 'node-cache';
 import { User } from '@/types/user';
@@ -6,10 +6,6 @@ import { User } from '@/types/user';
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-const getInternalCache = (): NodeCache => {
-    // @ts-ignore
-    return (githubService as any).__cache || new NodeCache();
-};
 
 describe('GitHub Service', () => {
     const mockUser: User = {

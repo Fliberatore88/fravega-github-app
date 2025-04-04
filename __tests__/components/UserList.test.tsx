@@ -1,4 +1,4 @@
-// __tests__/UserList.test.tsx
+
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { AppProvider } from '@/contexts/AppContext';
@@ -67,11 +67,9 @@ describe('UserList', () => {
       </AppProvider>
     );
 
-    // Seleccionar las imágenes de avatar por su alt text
     const img1 = screen.getByAltText('usuario1');
     const img2 = screen.getByAltText('usuario2');
 
-    // Decodificar las URLs antes de la comparación
     const img1Src = decodeURIComponent(img1.getAttribute('src')!.split('url=')[1].split('&')[0]);
     const img2Src = decodeURIComponent(img2.getAttribute('src')!.split('url=')[1].split('&')[0]);
 

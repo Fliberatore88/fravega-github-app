@@ -9,7 +9,11 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      
     ],
+  },
+  experimental: {
+    allowedDevOrigins: ['192.168.0.129'],
   },
   reactStrictMode: true,
 };

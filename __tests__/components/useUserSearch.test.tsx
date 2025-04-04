@@ -20,7 +20,7 @@ describe('useUserSearch', () => {
     <AppProvider>{children}</AppProvider>
   );
 
-  it('should fetch initial users when searchTerm is empty', async () => {
+  it('deberia fetchear los usuarios iniciales cuando searchTerm está vacío', async () => {
     (fetchUsers as jest.Mock).mockResolvedValue(mockUsers);
 
     const { result } = renderHook(() => useUserSearch(), { wrapper });
@@ -31,7 +31,7 @@ describe('useUserSearch', () => {
     });
   });
 
-  it('should fetch searched users when searchTerm is provided and results found', async () => {
+  it('debería fetchear busqueda de usuarios cuando se da un searchTerm y encuentra resultados', async () => {
     (fetchSearchedUsers as jest.Mock).mockResolvedValue(mockUsers);
 
     const { result } = renderHook(() => useUserSearch(), { wrapper });
@@ -47,7 +47,7 @@ describe('useUserSearch', () => {
     });
   });
 
-  it('should handle no users found', async () => {
+  it('deberia manejar cuando no encuentra usuarios', async () => {
     (fetchSearchedUsers as jest.Mock).mockResolvedValue([]);
 
     const { result } = renderHook(() => useUserSearch(), { wrapper });
@@ -62,7 +62,7 @@ describe('useUserSearch', () => {
     });
   });
 
-  it('should clear searchTerm when clearSearch is called', async () => {
+  it('deberia limpiar el searchTerm cuando se llama a clearSearch', async () => {
     (fetchUsers as jest.Mock).mockResolvedValue(mockUsers);
 
     const { result } = renderHook(() => useUserSearch(), { wrapper });
@@ -84,7 +84,7 @@ describe('useUserSearch', () => {
     });
   });
 
-  it('should handle error from fetchSearchedUsers gracefully', async () => {
+  it('deberia manejar el error de fetchSearchedUsers', async () => {
     (fetchSearchedUsers as jest.Mock).mockRejectedValue(new Error('Network error'));
 
     const { result } = renderHook(() => useUserSearch(), { wrapper });
