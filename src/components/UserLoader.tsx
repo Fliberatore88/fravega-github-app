@@ -3,19 +3,22 @@ import { fetchUsers } from '../services/github';
 import { useAppContext } from '../contexts/AppContext';
 
 const UserLoader: React.FC = () => {
-  const { setSearchResults, setSearchTerm } = useAppContext();
+  const { setSearchResults, setSearchTerm, searchTerm } = useAppContext();
 
   useEffect(() => {
     const loadUsers = async () => {
-      try{
+      try {
         const initialUsers = await fetchUsers();
         setSearchResults(initialUsers);
       } catch (error) {
-        console.error("Error loading users:", error);
+        console.error('Error loading users:', error);
       }
     };
-    loadUsers();
-  }, [setSearchResults, setSearchTerm]);
+
+    if (!searchTerm) {
+      loadUsers();
+    }
+  }, [setSearchResults, searchTerm]);
 
   return null;
 };

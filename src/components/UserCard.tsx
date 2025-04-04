@@ -5,7 +5,7 @@ import Image from 'next/image';
 interface UserCardProps {
   user: User;
   isFirst: boolean;
-  isFavorite: boolean; 
+  isFavorite: boolean;
   toggleFavorite: (user: User) => void;
 }
 

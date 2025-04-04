@@ -7,6 +7,7 @@ import { useAppContext } from '../../contexts/AppContext';
 
 interface UserDetailPageProps {
   user: User | null;
+  error?: string;
 }
 
 const UserDetailPage: React.FC<UserDetailPageProps> = ({ user }) => {
@@ -22,7 +23,7 @@ const UserDetailPage: React.FC<UserDetailPageProps> = ({ user }) => {
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="card border border-gray-200 p-8 rounded-md shadow-md relative w-full max-w-xl">
         <div className="flex items-center justify-center mb-6">
-          <Image src={user.avatar_url} alt={user.login} width={150} height={150} className="rounded-full" />
+          <Image src={user.avatar_url || 'https://via.placeholder.com/150'} alt={user.login} width={150} height={150} className="rounded-full" />
           <Image
             src={isFavorite ? '/favorito-seleccionado.png' : '/favorito-sin-seleccionar.png'}
             alt={isFavorite ? 'Eliminar Favorito' : 'Agregar Favorito'}
@@ -45,7 +46,7 @@ const UserDetailPage: React.FC<UserDetailPageProps> = ({ user }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps<UserDetailPageProps> = async ({ params }) => {
   const username = params?.username as string;
 
   if (!username) {
@@ -59,7 +60,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
     if (!user) {
       return {
-        notFound: true,
+        props: {
+          user: null,
+        },
       };
     }
 
@@ -69,8 +72,20 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       },
     };
   } catch (error) {
+    if (error instanceof Error && error.message === 'Límite de solicitudes alcanzado. Inténtalo más tarde.') {
+      return {
+        props: {
+          user: null,
+          error: error.message,
+        },
+      };
+    }
+
     console.error('Error fetching user:', error);
     return {
+      props: {
+        user: null,
+      },
       notFound: true,
     };
   }
