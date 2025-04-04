@@ -82,3 +82,5 @@ export const fetchUser = async (username: string): Promise<User> => {
         }
     }
 };
+
+export const __cache = cache;

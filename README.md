@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aplicación de Búsqueda de Usuarios de GitHub
 
-## Getting Started
+Este proyecto es una aplicación web construida con [Next.js](https://nextjs.org) que permite buscar y visualizar usuarios de GitHub. Utiliza la API de GitHub para obtener información de los usuarios y mostrarla de manera organizada.
 
-First, run the development server:
+## Características Principales
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+* **Búsqueda de Usuarios:** Permite buscar usuarios de GitHub por su nombre de usuario.
+* **Visualización de Información:** Muestra información relevante de cada usuario, como su avatar, nombre de usuario, número de seguidores y repositorios públicos.
+* **Interfaz de Usuario Moderna:** Diseñada con una interfaz intuitiva y fácil de usar.
+* **Manejo de Errores:** Incluye manejo de errores para situaciones como usuarios no encontrados o problemas de conexión con la API de GitHub.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Requisitos
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* **Node.js:** Se recomienda la versión 20.x.x o superior.
+* **npm:** Administrador de paquetes de Node.js.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Instrucciones de Instalación y Ejecución
 
-## Learn More
+1.  **Clonar el Repositorio:**
 
-To learn more about Next.js, take a look at the following resources:
+    ```bash
+    git clone <URL_DEL_REPOSITORIO>
+    cd <NOMBRE_DEL_PROYECTO>
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2.  **Instalar Dependencias:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    ```bash
+    npm install
+    ```
 
-## Deploy on Vercel
+3.  **Ejecutar el Servidor de Desarrollo:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ```bash
+    npm run dev
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4.  **Abrir en el Navegador:**
+
+    Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver la aplicación en funcionamiento.
+
+## Comandos Útiles
+
+* `npm run dev`: Inicia el servidor de desarrollo.
+* `npm run build`: Construye la aplicación para producción.
+* `npm run start`: Inicia el servidor de producción.
+* `npm run test`: Ejecuta las pruebas unitarias.
+
+## Tecnologías Utilizadas
+
+* [Next.js](https://nextjs.org): Framework de React para la construcción de aplicaciones web.
+* [React](https://reactjs.org): Librería de JavaScript para construir interfaces de usuario.
+* [GitHub API](https://docs.github.com/en/rest): API para obtener información de los usuarios de GitHub.
+* [Jest](https://jestjs.io) y [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro/): Para realizar tests unitarios.

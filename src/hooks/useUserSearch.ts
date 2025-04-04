@@ -4,7 +4,7 @@ import { useAppContext } from '../contexts/AppContext';
 import { fetchUsers, fetchSearchedUsers } from '../services/github';
 
 const useUserSearch = () => {
-    const { setSearchResults, searchResults, setSearchTerm, searchTerm, setUserNotFound } = useAppContext();
+    const { setSearchResults, searchResults, setSearchTerm, searchTerm, setUserNotFound, userNotFound } = useAppContext(); // Usa userNotFound del contexto
     const debouncedSearchRef = useRef<((term: string) => void) & { cancel: () => void } | undefined>(undefined);
 
     useEffect(() => {
@@ -15,18 +15,16 @@ const useUserSearch = () => {
                         const searchedUsers = await fetchSearchedUsers(term);
                         if (searchedUsers.length === 0) {
                             setUserNotFound(true);
-                            setSearchResults(searchedUsers);
                         } else {
                             setUserNotFound(false);
-                            setSearchResults(searchedUsers);
                         }
+                        setSearchResults(searchedUsers);
                     } else {
                         const initialUsers = await fetchUsers();
                         setUserNotFound(false);
                         setSearchResults(initialUsers);
                     }
                 } catch (error) {
-                    console.error("Error fetching users:", error);
                     setUserNotFound(true);
                     setSearchResults([]);
                 }
@@ -50,7 +48,7 @@ const useUserSearch = () => {
     return {
         users: searchResults,
         isLoading: false,
-        userNotFound: false, 
+        userNotFound,
         searchTerm,
         setSearchTerm,
         clearSearch,

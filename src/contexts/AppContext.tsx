@@ -12,6 +12,7 @@ interface AppContextProps {
   setSearchTerm: Dispatch<SetStateAction<string>>;
   searchResults: User[];
   setSearchResults: Dispatch<SetStateAction<User[]>>;
+  userNotFound: boolean;
   setUserNotFound: Dispatch<SetStateAction<boolean>>;
 }
 
@@ -22,7 +23,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [favoriteUsers, setFavoriteUsers] = useState<User[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<User[]>([]);
-  const [userNotFound, setUserNotFound] = useState(false);
+  const [userNotFound, setUserNotFound] = useState<boolean>(false);
 
   useEffect(() => {
     const storedTheme = localStorage.getItem('theme');
@@ -51,7 +52,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   return (
-    <AppContext.Provider value={{ theme, setTheme, toggleTheme, favoriteUsers, setFavoriteUsers, toggleFavorite, searchTerm, setSearchTerm, searchResults, setSearchResults, setUserNotFound }}>
+    <AppContext.Provider value={{ theme, setTheme, toggleTheme, favoriteUsers, setFavoriteUsers, toggleFavorite, searchTerm, setSearchTerm, searchResults, setSearchResults, userNotFound, setUserNotFound }}>
       {children}
     </AppContext.Provider>
   );
